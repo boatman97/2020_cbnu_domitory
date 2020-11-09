@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "app",
-    "slug": "app",
-    "version": "1.0.0",
+    "name": "충북대학교 기숙사식단",
+    "slug": "cbnu-domitory-menu",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
       "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "resizeMode": "cover",
+      "backgroundColor": "#7A1C3D"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -16,11 +16,18 @@
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
-    },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "android": {
+      "package": "com.boatman.cbnuDomotoryApp",
+      "versionCode": 2
+      
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.boatman.cbnuDomotoryApp"
+    },
+    "description": ""
   }
 }
