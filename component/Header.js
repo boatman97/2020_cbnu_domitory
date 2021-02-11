@@ -54,7 +54,7 @@ export default class Header extends React.Component{
       Alert.alert(
         '즐거운 식사 되세요 :)',
         `<평일>\n아침 : 07:20 ~ 09:00\n점심 : 11:30 ~ 13:30\n저녁 : 17:30 ~ 19:10\n
-        \n<주말/공휴일>\n아침 : 07:20 ~ 09:00\n점심 : 11:30 ~ 13:30\n저녁 : 17:30 ~ 19:10 \n\n문의사항 : applewodnr@naver.com
+        \n<주말/공휴일>\n아침 : 08:00 ~ 09:00\n점심 : 12:00 ~ 13:00\n저녁 : 17:30 ~ 19:00 \n\n문의사항 : applewodnr@naver.com
         
         `,
         [
