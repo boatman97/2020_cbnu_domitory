@@ -144,7 +144,7 @@ export default class Header extends React.Component{
                 placeholder="select date"
                 format="YYYY-MM-DD"
                 minDate="2020-09-01"
-                maxDate="2020-12-30"
+                maxDate="2023-12-31"
                 confirmBtnText="Confirm"
                 cancelBtnText="Cancel"
                 showIcon= {true}
@@ -226,4 +226,3 @@ const styles = StyleSheet.create({
       textAlign:'center',
   }
 });
-

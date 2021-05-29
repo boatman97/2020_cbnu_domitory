@@ -2,7 +2,7 @@
   "expo": {
     "name": "충북대학교 기숙사식단",
     "slug": "cbnu-domitory-menu",
-    "version": "1.0.2",
+    "version": "1.0.3i",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {
@@ -20,8 +20,9 @@
       "favicon": "./assets/favicon.png"
     },
     "android": {
+      "permissions": [],
       "package": "com.boatman.cbnuDomotoryApp",
-      "versionCode": 2
+      "versionCode": 3
       
     },
     "ios": {

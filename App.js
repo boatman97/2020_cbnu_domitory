@@ -4,9 +4,8 @@ import { StatusBar } from 'expo-status-bar';
 import Swiper from 'react-native-swiper/src';
 import Menu from './component/Menu';
 import Header from './component/Header';
-// import Footer from './component/Footer';
 import Loading from './component/Loading';
-
+import Maintenance from "./component/Maintenance"
 import {AsyncStorage } from 'react-native';
 
 
@@ -35,6 +34,7 @@ export default class App extends React.Component {
       menuList:false, // 식단 Object
       reLoading: false, // 날짜 변경시 로딩 
       domOpt : domitoryNames,
+      isMaintance : false,
     }
 
     this.handler = this.handler.bind(this);
@@ -51,7 +51,6 @@ export default class App extends React.Component {
       }
       this.setState({reLoading: false})
     } else {
-      // console.log("여기까지 왓나?" + newState.split(","));
       this.setState({reLoading: true})
       this.setState({domOpt : newState.split(",")})
       this.setState({reLoading: false})
@@ -59,9 +58,7 @@ export default class App extends React.Component {
   }
 
 
-    
-
-
+  
   _getAsync = async () => {
     try {
       const value = await AsyncStorage.getItem('domOpt');
@@ -76,18 +73,6 @@ export default class App extends React.Component {
     }
   };
 
-  // handler = async (changeDate, cond) => {
-  //   if(this.state.today != changeDate){
-  //     this.setState({reLoading: true})
-  //     await this.__getJSON(changeDate);
-  //   } else{
-  //     Alert.alert("이미 업데이트가 완료 되었습니다.");
-  //   }
-
-  //   this.setState({reLoading: false})
-  // }
-
-  
 
   // 오늘의 날짜 얻어오기 함수
   __getToday = () => {
@@ -140,13 +125,26 @@ export default class App extends React.Component {
 
 
   componentDidMount(){
+    // after load
     this.__getJSON(this.state.today);
     this._getAsync();
+
+    setTimeout(()=>{
+      // 만약 10초 동안 서버가 접근이 불가한 경우, 서버 점검을 표시
+      if(this.state.isLoading == true){          
+        this.setState({
+          isMaintance : true
+        })
+      }
+    },1000*10);
   }
 
 
 
   render(){
+    // 서버가 점검 중인 경우.
+    if(this.state.isMaintance == true){return <Maintenance />}
+    
     return this.state.isLoading == true ? <Loading /> : (
 
 
@@ -201,10 +199,6 @@ export default class App extends React.Component {
           </Swiper>
         </View>
 
-        {/* height 떄문에 푸터 제거. footer */}
-        {/* <View style={styles.footer}>
-          <Footer />
-        </View> */}
       </View>
 
     ); 
@@ -225,9 +219,6 @@ const styles = StyleSheet.create({
     zIndex:0,
     elevation:0,
   },
-  // footer:{
-  //   flex:0.6,
-  // },
   buttonText:{
     fontSize:150,
     width:150
